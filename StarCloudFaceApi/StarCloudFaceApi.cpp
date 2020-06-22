@@ -182,7 +182,7 @@ const char* identify_by_feature(const std::vector<float>& f1, const char* group_
 }
 
 // 人脸识别(传入特征值feature)(和整个库比较，提前加载)
-const char* identify_by_feature_full(const std::vector<float>& f1, int user_top_num = 1)
+const char* identify_by_feature_full(const std::vector<float>& f1, int user_top_num)
 {
     return api->identify_by_feature(f1, user_top_num);
 }
