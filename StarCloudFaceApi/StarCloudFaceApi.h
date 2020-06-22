@@ -64,9 +64,9 @@ extern "C" _declspec(dllexport) const char* identify(const char* image, int img_
 // 人脸识别(和整个库比较,提前加载)
 extern "C" _declspec(dllexport) const char* identify_full(const char* image, int img_type, int user_top_num = 1);
 // 人脸识别(传入opencv视频帧)
-extern "C" _declspec(dllexport) const char* identify_by_opencv(const cv::Mat & mat, const char* group_id_list, const char* user_id, int user_top_num = 1);
+extern "C" _declspec(dllexport) const char* identify_by_mat(const cv::Mat & mat, const char* group_id_list, const char* user_id, int user_top_num = 1);
 // 人脸识别(传入opencv视频帧)(和整个库比较，提前加载)
-extern "C" _declspec(dllexport) const char* identify_by_open_cv_full(const cv::Mat & mat, int user_top_num = 1);
+extern "C" _declspec(dllexport) const char* identify_by_mat_full(const cv::Mat & mat, int user_top_num = 1);
 // 人脸识别(传入二进制图片buf)
 extern "C" _declspec(dllexport) const char* identify_by_buf(const unsigned char* image, int size, const char* group_id_list, const char* user_id, int user_top_num = 1);
 // 人脸识别(传入二进制图片buf)(和整个库比较，提前加载)
@@ -110,13 +110,13 @@ extern "C" _declspec(dllexport) void set_detect_in_video_interval(int interval_i
 */
 extern "C" _declspec(dllexport) int track(std::vector<TrackFaceInfo> * &out, const char* image, int img_type, int maxTrackObjNum);
 
-extern "C" _declspec(dllexport) int track_by_open_cv(std::vector<TrackFaceInfo> * &out, const cv::Mat & mat, int maxTrackObjNum);
+extern "C" _declspec(dllexport) int track_by_mat(std::vector<TrackFaceInfo> * &out, const cv::Mat & mat, int maxTrackObjNum);
 // 人脸检测（传入二进制图片buf）
 extern "C" _declspec(dllexport) int track_by_buf(std::vector<TrackFaceInfo> * &out, const unsigned char* image, int size, int maxTrackObjNum);
 
 // 只跟踪最大人脸，参数同track
 extern "C" _declspec(dllexport) int track_max_face(std::vector<TrackFaceInfo> * &out, const char* image, int img_type);
-extern "C" _declspec(dllexport) int track_max_face_by_open_cv(std::vector<TrackFaceInfo> * &out, const cv::Mat & mat);
+extern "C" _declspec(dllexport) int track_max_face_by_mat(std::vector<TrackFaceInfo> * &out, const cv::Mat & mat);
 // 最大人脸检测（传入二进制图片buf）
 extern "C" _declspec(dllexport) int track_max_face_by_buf(std::vector<TrackFaceInfo> * &out, const unsigned char* image, int size);
 //清除已跟踪到的人脸信息
@@ -126,13 +126,13 @@ extern "C" _declspec(dllexport) void clearTrackedFaces();
 //红外IR静默活体检测
 extern "C" _declspec(dllexport) const char* ir_liveness_check(const char* image, int img_type);
 //红外IR静默活体检测(传入opencv的视频帧)
-extern "C" _declspec(dllexport) const char* ir_liveness_check_by_open_cv(const cv::Mat & mat);
+extern "C" _declspec(dllexport) const char* ir_liveness_check_by_mat(const cv::Mat & mat);
 //红外IR静默活体检测（传入二进制图片buf）
 extern "C" _declspec(dllexport) const char* ir_liveness_check_by_buf(const unsigned char* image, int size);
 //单目RGB静脉活体检测
 extern "C" _declspec(dllexport) const char* rgb_liveness_check(const char* image, int img_type);
 //单目RGB静脉活体检测(传入opencv的视频帧)
-extern "C" _declspec(dllexport) const char* rgb_liveness_check_by_open_cv(const cv::Mat & mat);
+extern "C" _declspec(dllexport) const char* rgb_liveness_check_by_mat(const cv::Mat & mat);
 //单目RGB静脉活体检测（传入二进制图片buf）
 extern "C" _declspec(dllexport) const char* rgb_liveness_check_by_buf(const unsigned char* image, int size);
 
@@ -152,7 +152,7 @@ extern "C" _declspec(dllexport) int get_tracked_faces(std::vector<TrackFaceInfo>
 //获取人脸特征值(传入图片)
 extern "C" _declspec(dllexport) int get_face_feature(const char* image, int img_type, const float*& feature);
 //获取人脸特征值(传入opencv视频帧)
-extern "C" _declspec(dllexport) int get_face_feature_by_open_cv(const cv::Mat & mat, const float*& feature);
+extern "C" _declspec(dllexport) int get_face_feature_by_mat(const cv::Mat & mat, const float*& feature);
 // //获取人脸特征值(传入二进制图片buf)
 extern "C" _declspec(dllexport) int get_face_feature_by_buf(const unsigned char* image, int size,
     const float*& feature);

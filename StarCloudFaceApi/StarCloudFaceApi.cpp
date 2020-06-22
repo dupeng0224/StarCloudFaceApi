@@ -154,12 +154,12 @@ const char* identify_full(const char* image, int img_type, int user_top_num)
     return api->identify(image, img_type, user_top_num);
 }
 // 人脸识别(传入opencv视频帧)
-const char* identify_by_opencv(const cv::Mat& mat, const char* group_id_list, const char* user_id, int user_top_num)
+const char* identify_by_mat(const cv::Mat& mat, const char* group_id_list, const char* user_id, int user_top_num)
 {
     return api->identify(mat, group_id_list, user_id, user_top_num);
 }
 // 人脸识别(传入opencv视频帧)(和整个库比较，提前加载)
-const char* identify_by_open_cv_full(const cv::Mat& mat, int user_top_num)
+const char* identify_by_mat_full(const cv::Mat& mat, int user_top_num)
 {
     return api->identify(mat, user_top_num);
 }
@@ -182,7 +182,7 @@ const char* identify_by_feature(const std::vector<float>& f1, const char* group_
 }
 
 // 人脸识别(传入特征值feature)(和整个库比较，提前加载)
-const char* identify_by_feature(const std::vector<float>& f1, int user_top_num = 1)
+const char* identify_by_feature_full(const std::vector<float>& f1, int user_top_num = 1)
 {
     return api->identify_by_feature(f1, user_top_num);
 }
@@ -251,7 +251,7 @@ int track(std::vector<TrackFaceInfo>*& out, const char* image, int img_type, int
     return api->track(out, image, img_type, maxTrackObjNum);
 }
 
-int track_by_open_cv(std::vector<TrackFaceInfo>*& out, const cv::Mat& mat, int maxTrackObjNum)
+int track_by_mat(std::vector<TrackFaceInfo>*& out, const cv::Mat& mat, int maxTrackObjNum)
 {
     return api->track(out, mat, maxTrackObjNum);
 }
@@ -266,7 +266,7 @@ int track_max_face(std::vector<TrackFaceInfo>*& out, const char* image, int img_
 {
     return api->track_max_face(out, image, img_type);
 }
-int track_max_face_by_open_cv(std::vector<TrackFaceInfo>*& out, const cv::Mat& mat)
+int track_max_face_by_mat(std::vector<TrackFaceInfo>*& out, const cv::Mat& mat)
 {
     return api->track_max_face(out, mat);
 }
@@ -288,7 +288,7 @@ const char* ir_liveness_check(const char* image, int img_type)
     return api->ir_liveness_check(image, img_type);
 }
 //红外IR静默活体检测(传入opencv的视频帧)
-const char* ir_liveness_check_by_open_cv(const cv::Mat& mat)
+const char* ir_liveness_check_by_mat(const cv::Mat& mat)
 {
     return api->ir_liveness_check(mat);
 }
@@ -303,7 +303,7 @@ const char* rgb_liveness_check(const char* image, int img_type)
     return api->rgb_liveness_check(image, img_type);
 }
 //单目RGB静脉活体检测(传入opencv的视频帧)
-const char* rgb_liveness_check_by_open_cv(const cv::Mat& mat)
+const char* rgb_liveness_check_by_mat(const cv::Mat& mat)
 {
     return api->rgb_liveness_check(mat);
 }
@@ -347,7 +347,7 @@ int get_face_feature(const char* image, int img_type, const float*& feature)
     return api->get_face_feature(image, img_type, feature);
 }
 //获取人脸特征值(传入opencv视频帧)
-int get_face_feature_by_open_cv(const cv::Mat& mat, const float*& feature)
+int get_face_feature_by_mat(const cv::Mat& mat, const float*& feature)
 {
     return api->get_face_feature(mat, feature);
 }
