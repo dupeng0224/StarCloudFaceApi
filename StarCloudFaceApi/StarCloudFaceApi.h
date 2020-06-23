@@ -161,7 +161,7 @@ extern "C" _declspec(dllexport) int get_face_feature_by_face(const cv::Mat & mat
 //特征值比对
 extern "C" _declspec(dllexport) float compare_feature(const std::vector<float> & f1, const std::vector<float> & f2);
 
-BaiduFaceApi* api = new BaiduFaceApi();
+static BaiduFaceApi* api = new BaiduFaceApi();
 
 class StarCloudFaceApi
 {

@@ -300,6 +300,10 @@ const char* ir_liveness_check_by_buf(const unsigned char* image, int size)
 //单目RGB静脉活体检测
 const char* rgb_liveness_check(const char* image, int img_type)
 {
+    if (api == nullptr)
+    {
+        cout << "baidu sdk is null---------------------------" << endl;
+    }
     return api->rgb_liveness_check(image, img_type);
 }
 //单目RGB静脉活体检测(传入opencv的视频帧)
